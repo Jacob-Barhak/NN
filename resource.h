@@ -1,0 +1,124 @@
+//{{NO_DEPENDENCIES}}
+// Microsoft Visual C++ generated include file.
+// Used by NN.rc
+//
+#define IDD_ABOUTBOX                    100
+#define IDD_GROWING_GRID_PAGE           102
+#define IDD_NEURAL_GAS_PAGE             107
+#define IDR_MAINFRAME                   128
+#define IDR_NNTYPE                      129
+#define IDD_DIALOG_NET_TRAIN            131
+#define IDD_DIALOG_VIEW_PARAM           132
+#define IDD_GROWING_NEURAL_GAS_PAGE     133
+#define IDD_SELF_ORGANIZING_FEATURE_MAP_PAGE 134
+#define IDD_DIALOG_INIT_NN              135
+#define IDC_NEURON_NUMBER               1002
+#define IDC_RUN_LENGTH                  1003
+#define IDC_POINT_SIZE                  1003
+#define IDC_INIT_EPS                    1004
+#define IDC_NEURON_SIZE                 1004
+#define IDC_CHUNK_SIZE                  1005
+#define IDC_DRAW_AXES                   1005
+#define IDC_FINAL_EPS                   1006
+#define IDC_DRAW_NEURONS                1006
+#define IDC_INIT_LAMBDA                 1007
+#define IDC_DRAW_POINTS                 1007
+#define IDC_FINAL_LAMBDA                1008
+#define IDC_DRAW_EDGES                  1008
+#define IDC_EDGE_EXPERATION_AGE_FINAL   1009
+#define IDC_DRAW_FACES                  1009
+#define IDC_EDGE_EXPERATION_AGE_INIT    1010
+#define IDC_DRAW_FACES2                 1010
+#define IDC_LIGHTING_TWO_SIDES          1010
+#define IDC_NEURON_SIZE2                1011
+#define IDC_NORMAL_SIZE                 1011
+#define IDC_NG_NEURON_NUMBER            1014
+#define IDC_NG_RUN_LENGTH               1015
+#define IDC_NG_INIT_EPS                 1016
+#define IDC_NG_INIT_LAMBDA              1017
+#define IDC_NG_EDGE_EXPERATION_AGE_INIT 1018
+#define IDC_NG_CHUNK_SIZE               1019
+#define IDC_NG_FINAL_EPS                1020
+#define IDC_NG_FINAL_LAMBDA             1021
+#define IDC_NG_EDGE_EXPERATION_AGE_FINAL 1022
+#define IDC_GG_SIGMA                    1023
+#define IDC_GG_LAMBDA_GROWTH            1024
+#define IDC_GG_RADIUS_INIT              1025
+#define IDC_GG_RADIUS_FINAL             1026
+#define IDC_GG_NEURON_NUMBER_U          1027
+#define IDC_GG_RUN_LENGTH               1028
+#define IDC_GG_INIT_EPS                 1029
+#define IDC_GG_CHUNK_SIZE               1030
+#define IDC_GG_FINAL_EPS                1031
+#define IDC_GNG_EPS_B                   1032
+#define IDC_GNG_EPS_N                   1033
+#define IDC_GNG_ALPHA                   1034
+#define IDC_GNG_BETTA                   1035
+#define IDC_GNG_AGE_MAX                 1036
+#define IDC_GNG_NEURON_NUMBER           1038
+#define IDC_GNG_RUN_LENGTH              1039
+#define IDC_GNG_CHUNK_SIZE              1040
+#define IDC_GNG_LAMBDA_GROWTH           1041
+#define IDC_GG_NEURON_NUMBER_V          1043
+#define IDC_SOFM_SIGMA_INIT             1044
+#define IDC_SOFM_SIGMA_FINAL            1045
+#define IDC_SOFM_RUN_LENGTH             1046
+#define IDC_SOFM_CHUNK_SIZE             1047
+#define IDC_SOFM_INIT_EPS               1048
+#define IDC_SOFM_FINAL_EPS              1049
+#define IDC_SOFM_RADIUS_INIT            1050
+#define IDC_SOFM_RADIUS_FINAL           1051
+#define IDC_GG_GRID_CAD_GROW            1052
+#define IDC_SOFM_BOUNDARY_CORRECTION_EVERY 1052
+#define IDC_GG_CYCLIC_U                 1053
+#define IDC_SOFM_BOUNDARY_CORRECTION_RUNLENGTH 1053
+#define IDC_NN_INIT_TOPOLOGY            1053
+#define IDC_SOFM_BOUNDARY_CORRECTION_POINT_WEIGHT 1054
+#define IDC_GG_BOUNDARY_CORRECTION_EVERY 1054
+#define IDC_NN_INIT_NET_CAN_GROW_EDGES  1054
+#define IDC_GG_CYCLIC_V                 1055
+#define IDC_SOFM_GRID_CAN_GROW          1055
+#define IDC_NN_INIT_CYCLIC_U            1055
+#define IDC_GG_BOUNDARY_CORRECTION_RUNLENGTH 1056
+#define IDC_SOFM_CYCLIC_U               1056
+#define IDC_NN_INIT_CYCLIC_V            1056
+#define IDC_GG_BOUNDARY_CORRECTION_POINT_WEIGHT 1057
+#define IDC_SOFM_CYCLIC_V               1057
+#define IDC_NN_INIT_NET_CAN_GROW_NEURONS 1057
+#define IDC_SOFM_LAMBDA_GROWTH          1058
+#define IDC_NN_INIT_FAST_INIT_TYPE      1058
+#define IDC_SOFM_NEURON_NUMBER_U        1059
+#define IDC_SOFM_NEURON_NUMBER_V        1060
+#define IDC_NN_INIT_NEURON_NUMBER_U     1061
+#define IDC_NN_INIT_NEURON_NUMBER_V     1062
+#define ID_BUTTON_VIEW_PARAM            32771
+#define ID_BUTTON_TRAIN_NET             32772
+#define ID_BUTTON_TRAIN_NET_ONE_STEP    32773
+#define ID_BUTTON_TRAIN_NET_CONTINOUS   32774
+#define ID_BUTTON_PAUSE_NET_TRAINING    32775
+#define ID_BUTTON_CHANGE_TRAINING_PARAMETERS 32776
+#define ID_BUTTON_CHANGE_NETWORK_TYPE   32777
+#define ID_BUTTON_TRIANGULATE_NET       32778
+#define ID_BUTTON_CLOSE_LOOPS           32779
+#define ID_BUTTON_DETECT_NON_MANIFOLD_NEURONS 32780
+#define ID_BUTTON_DELETE_NON_MANIFOLD_NEURONS 32782
+#define ID_BUTTON_CALC_NORMALS_USING_LSQ 32783
+#define ID_BUTTON_DELETE_NON_MANIFOLD_FACES 32784
+#define ID_BUTTON_INITIATE_ENHANCED_HEBBIAN_LEARNING 32786
+#define ID_BUTTON_SET_NORMAL_DIRECTIONS 32790
+#define ID_BUTTON_SET_NEURON_POSITIONS_TO_NEAREST_SAMPLE_POINT 32791
+#define ID_BUTTON_RESET_NEURON_POSITIONS_TO_RANDOM_SAMPLE_POINTS 32793
+#define ID_BUTTON_RESET_NORMAL_DIRECTIONS 32794
+#define ID_BUTTON_RESET_NEURON_POSITIONS_TO_NEAREST_SAMPLE_POINT 32795
+
+// Next default values for new objects
+// 
+#ifdef APSTUDIO_INVOKED
+#ifndef APSTUDIO_READONLY_SYMBOLS
+#define _APS_3D_CONTROLS                     1
+#define _APS_NEXT_RESOURCE_VALUE        137
+#define _APS_NEXT_COMMAND_VALUE         32796
+#define _APS_NEXT_CONTROL_VALUE         1063
+#define _APS_NEXT_SYMED_VALUE           101
+#endif
+#endif
