@@ -470,13 +470,13 @@ ostream& OutputToIritFormat(ostream& os, NeuralNet &NNet ){
 
 		//create V knot vector
 		os <<"\t\t[KV 0 0 0";
-		for (i=0; i<NNet.NetworkSizeV-2 ; i++){
+		for (int i=0; i<NNet.NetworkSizeV-2 ; i++){
 			os <<" "<< ((double)i / (NNet.NetworkSizeV-3) );
 		}
 		os <<" 1 1 1]\n";
 
 		for (int j=0; j<NNet.NetworkSizeV ; j++){
-			for (i=0; i<NNet.NetworkSizeU ; i++){
+			for (int i=0; i<NNet.NetworkSizeU ; i++){
 				Neuron *It= NNet.NeuronArray[(i)*(NNet.NetworkSizeV)+(j)];
 				os <<" [ " << (MyPoint) (*It) ;
 				os.seekp( -2, ios::cur ); // eat last new line characer
@@ -2280,7 +2280,7 @@ int NeuralNet::DeleteNonManifoldFaces(bool UseNormalProjection){   //(double Min
 		int FaceNum=N->FaceCounter;
 
 		//order the faces from new to old
-		for (i=0; i<FaceNum-1 ; i++){
+		for (int i=0; i<FaceNum-1 ; i++){
 			for (int j=i+1; j<FaceNum ; j++){
 				if (FaceList[i]->CreationAge > FaceList[j]->CreationAge ){
 					Face *TempFace = FaceList[i];
@@ -2290,7 +2290,7 @@ int NeuralNet::DeleteNonManifoldFaces(bool UseNormalProjection){   //(double Min
 			}
 		}
 		// now go over the faces and check their intersection against other faces - if they intersect delete the older one - do not check faces that share an edge
-		for (i=0; i<FaceNum-1 ; i++){
+		for (int i=0; i<FaceNum-1 ; i++){
 			if ( FaceList[i] ==NULL)
 				continue;
 			Neuron *N1=FaceList[i]->OtherNeuronInFace(N,false);
@@ -2699,7 +2699,7 @@ void NeuralNet::TriangulateNet(PointList &PtLst, double NormalAgreementThreshold
 	static int CurrDist=1;
 	static Neuron *N=Neurons.Head; // start with some neuron//
 	int NumberOfNeuronsPassed=0;
-	static NumberOfViolations=0;
+	static int NumberOfViolations=0;
 
 	if (!StartedTriangulation){
 //		ClassifySamplePointList(PtLst);
@@ -2754,14 +2754,14 @@ void NeuralNet::TriangulateNet(PointList &PtLst, double NormalAgreementThreshold
 			N->Proj.Pos[0]=0.0;
 			N->Proj.Pos[1]=0.0;
 			N->Proj.Pos[2]=0.0;
-			for (i=0; i<NeighbourNumber;i++){
+			for (int i=0; i<NeighbourNumber;i++){
 				NeighbourArray[i]->ProjectViaNormal(E1,E2,*N);
 				ASSERT(NeighbourArray[i]->Angle >=0.0);
 			}
 			
 
 			// order by projection angle*** - simple bubble sort
-			for (i=1; i<NeighbourNumber; i++){
+			for (int i=1; i<NeighbourNumber; i++){
 				for (int j=i+1; j<NeighbourNumber;j++){
 					if (NeighbourArray[i]->Angle > NeighbourArray[j]->Angle){
 						// swap positions
@@ -2774,7 +2774,7 @@ void NeuralNet::TriangulateNet(PointList &PtLst, double NormalAgreementThreshold
 
 
 			//prune unneeded neurons after visibility check
-			for (i=0; i<NeighbourNumber; i++){
+			for (int i=0; i<NeighbourNumber; i++){
 				Neuron *It2 = NeighbourArray[i];
 				bool Prune =CheckItersectionForPruning (N,It2,NeighbourNumber,NeighbourArray);
 				Prune = Prune || CheckFaceOclusionForPruning (N,It2);
@@ -2794,7 +2794,7 @@ void NeuralNet::TriangulateNet(PointList &PtLst, double NormalAgreementThreshold
 			
 			int Counter=0;
 			// triangulate
-			for (i=0; i<NeighbourNumber; i++){
+			for (int i=0; i<NeighbourNumber; i++){
 				int j = (i+1) % NeighbourNumber; 
 
 				// check for normal agreement and a triangle with less then 180 degrees
@@ -3337,7 +3337,7 @@ bool NeuralNet::LoadNetFromFile(LPCTSTR FileName)
 			}
 
 			//read prev iso-lines
-			for (i=0; i<PrevIsoLinesNumber;i++){
+			for (int i=0; i<PrevIsoLinesNumber;i++){
 			
 				int IsoLinesNo;
 				ifs >> IsoLinesNo;
@@ -3715,7 +3715,7 @@ bool NeuralNet::LoadNetFromFile(LPCTSTR FileName)
 						}
 						// counter clockwise
 						double CCWDistanceSum=0.0;
-						for (j=0; j < NumberOfPointsPerLoop; j++){
+						for (int j=0; j < NumberOfPointsPerLoop; j++){
 							MyPoint InterpPt= *RECTNNNEW(IsoLineNo,j) - *RECTNNNEW(NextIsoLineNo,(DispIndex-j+NumberOfPointsPerLoop)%NumberOfPointsPerLoop);
 							CCWDistanceSum += ~InterpPt;	
 						}
@@ -3888,7 +3888,7 @@ bool NeuralNet::LoadNetFromFile(LPCTSTR FileName)
 
 		// now create the faces
 
-		for (i=0;i<FaceNo;i++){
+		for (int i=0;i<FaceNo;i++){
 			Neuron *N1, *N2, *N3;
 
 			N1=NeuronArray[PtIndex[FaceIndex[0][i]]];
@@ -3942,7 +3942,7 @@ void NeuralNet::CloseBoundary(){
 	Neuron **NeuronLoop= new (Neuron *[Neurons.Size+1]);
 	for(int i=0;i<Neurons.Size+1;i++) NeuronLoop[i]=NULL;
 	Edge **EdgeLoop= new (Edge *[Edges.Size]);
-	for(i=0;i<Edges.Size;i++) EdgeLoop[i]=NULL;
+	for(int i=0;i<Edges.Size;i++) EdgeLoop[i]=NULL;
 
 	int LoopStart=0;
 	int Itter=0;
@@ -3987,7 +3987,7 @@ void NeuralNet::CloseBoundary(){
 			// we do it the dirty way
 
 			Edge *LastEdge=Edges.CreateOrRefreshEdge(InterpN,NeuronLoop[0],EDGE_CREATED_TO_CLOSE_LOOP);
-			for (i=0; i<LoopSize; i++){
+			for (int i=0; i<LoopSize; i++){
 				Edge *NewEdge = Edges.CreateOrRefreshEdge(InterpN,NeuronLoop[i+1],EDGE_CREATED_TO_CLOSE_LOOP);			
 				Faces.CreateOrRefreshFace(EdgeLoop[i], NewEdge, LastEdge, FACE_CREATED_TO_CLOSE_LOOP);
 				LastEdge=NewEdge;
@@ -4267,7 +4267,7 @@ int NeuralNet::DetectLoop (Neuron **NeuronList, Edge **EdgeList, Neuron *NeuronI
 		int DupEndIndex=0;
 		//now make sure that this is the minimal loop by scanning the loop
 		// see if there is a duplicate neuron in the list
-		for (i=0;i<LoopSize;i++) for (int j=i+1;j<LoopSize;j++) if (NeuronList[i]==NeuronList[j]){
+		for (int i=0;i<LoopSize;i++) for (int j=i+1;j<LoopSize;j++) if (NeuronList[i]==NeuronList[j]){
 			DuplicatesExist = true;
 			DuplicateNeuron = NeuronList[j];
 			DupStartIndex = i;
@@ -4430,7 +4430,7 @@ void NeuralNet::AddGrowingNeuralFacesNeuron(RealType Alpha , PointList &PtLst){
 	RealType MaxErr=-1.0;
 	It=Neurons.Head->Next->Next;
 	Neuron *N3 = It;
-	for ( i=0; i<Neighbours-2;i++){
+	for ( int i=0; i<Neighbours-2;i++){
 		if (It->Error > MaxErr && Faces.IsFace(N1,N2,It)!=NULL ){
 			N3=It;
 			MaxErr=It->Error;
@@ -4776,7 +4776,7 @@ void NeuralNet::DelOrphanEdgesAndNeurons(){
 
 	// now do garbage collection on the neuron list
 	Neuron *It=Neurons.Head;
-	for(i=0;i<Neurons.Size;i++){
+	for(int i=0;i<Neurons.Size;i++){
 		if (It->EdgeCounter == 0){
 			// this neuron has lost all of it's faces - delete its edges and then it and free memory
 			// first delete from location then from list
@@ -4918,7 +4918,7 @@ int NeuralNet::DeleteOverlappingFaces(Neuron *Nwin,int FaceSeedNumbers){
 	int NumberOfDeletions=0;
 	//do  the following loop through all candidate faces found and eliminate problematic faces
 	TIC(6)
-	for (i=0;i<ActualCandidateFacesNumber;i++){
+	for (int i=0;i<ActualCandidateFacesNumber;i++){
 		Face *F1 = FaceArray[i];
 		if (F1==NULL) continue; // skip face is it was deleted
 		Neuron *F1N1,*F1N2, *F1N3;
@@ -5310,7 +5310,7 @@ Neuron* NeuralNet::AddGrowingCellStructureNeuron(RealType Alpha, PointList &PtLs
 	double AccumulateError=0.0;
 	int AccumulateLastWinAge=0;
 	It=Neurons.Head->Next; // skip the winner (who is now the first on the list)
-	for (i=0; i<Neighbours;i++){
+	for (int i=0; i<Neighbours;i++){
 		It->Error *= NeighbourRelativeErrorDecrease;
 		AccumulateError += It->Error;
 		AccumulateLastWinAge += It->LastWinningAge;
@@ -5673,7 +5673,7 @@ Neuron *NeuralNet::EdgeCollapse(Edge *E){
 	// delete old faces from neuron2 and create new ones instead from the new neuron
 
 	FaceList=N2->FacesBelongingToNeuron();
-	for (i=0;i<N2->FaceCounter;i++){
+	for (int i=0;i<N2->FaceCounter;i++){
 		Face *F=FaceList[i];
 		N3=F->OtherNeuronInFace(N2,false);
 		N4=F->OtherNeuronInFace(N2,true);
@@ -5758,7 +5758,7 @@ bool NeuralNet::MergeCollision(Neuron *N1, Neuron *N2){
 	Face *LastFace=N1->EdgeStuckHead->FacesStuckHead;
 	Neuron *OtherNeuron = LastFace->OtherNeuronInFace(N1);
 
-	for (i=0; i<N1LoopSize ; i++){
+	for (int i=0; i<N1LoopSize ; i++){
 		NeuronLoop1[i]=OtherNeuron;
 		OtherNeuron = LastFace->OtherNeuronInFace(N1,OtherNeuron);
 		Edge *E = Edges.FindEdge(N1,OtherNeuron,true);
@@ -5772,7 +5772,7 @@ bool NeuralNet::MergeCollision(Neuron *N1, Neuron *N2){
 	LastFace=N2->EdgeStuckHead->FacesStuckHead;
 	OtherNeuron = LastFace->OtherNeuronInFace(N2);
 
-	for (i=0; i<N2LoopSize ; i++){
+	for (int i=0; i<N2LoopSize ; i++){
 		NeuronLoop2[i]=OtherNeuron;
 		OtherNeuron = LastFace->OtherNeuronInFace(N2,OtherNeuron);
 		Edge *E = Edges.FindEdge(N2,OtherNeuron,true);
@@ -5784,12 +5784,12 @@ bool NeuralNet::MergeCollision(Neuron *N1, Neuron *N2){
 
 	// check that the loops do not contain a boundary neuron
 	bool InvalidMerge=false;
-	for (i=0; i<N1LoopSize ; i++){
+	for (int i=0; i<N1LoopSize ; i++){
 		if (NeuronLoop1[i]->Tags & NEURON_ON_BOUNDARY)
 			InvalidMerge = true;
 	}
 
-	for (i=0; i<N2LoopSize ; i++){
+	for (int i=0; i<N2LoopSize ; i++){
 		if (NeuronLoop2[i]->Tags & NEURON_ON_BOUNDARY)
 			InvalidMerge = true;
 	}
@@ -5823,7 +5823,7 @@ bool NeuralNet::MergeCollision(Neuron *N1, Neuron *N2){
 		int LargestEdgeStartIndex=-1;
 		double LargestEdgeSize=0.0;
 		// look for largest edge 
-		for (i=0; i<*SmallerLoopSize; i++){
+		for (int i=0; i<*SmallerLoopSize; i++){
 			double EdgeSize = ~(*SmallerLoop[i] - *SmallerLoop[(i+1) % *SmallerLoopSize]);
 			if (EdgeSize>LargestEdgeSize){
 				LargestEdgeStartIndex=i;
@@ -5844,7 +5844,7 @@ bool NeuralNet::MergeCollision(Neuron *N1, Neuron *N2){
 
 		// free a place for the new neuron when edge split will occour.
 		
-		for (i = *SmallerLoopSize; i>LargestEdgeStartIndex+1; i--)
+		for (int i = *SmallerLoopSize; i>LargestEdgeStartIndex+1; i--)
 			SmallerLoop[i] = SmallerLoop[i-1];
 #ifdef MY_DEBUG
 		ASSERT (SmallerLoop[LargestEdgeStartIndex] == SmallerLoop[LargestEdgeStartIndex+1]);
@@ -5862,7 +5862,7 @@ bool NeuralNet::MergeCollision(Neuron *N1, Neuron *N2){
 
 	for (int LeftOffset=0;LeftOffset<LoopSize;LeftOffset++){
 		double SumOfSquaredDistances=0.0;
-		for (i=0; i<LoopSize; i++){
+		for (int i=0; i<LoopSize; i++){
 			double Dist = ~(*NeuronLoop1[i] - *NeuronLoop2[(i+LeftOffset) % LoopSize]);
 			SumOfSquaredDistances += Dist*Dist;
 		}
@@ -5880,7 +5880,7 @@ bool NeuralNet::MergeCollision(Neuron *N1, Neuron *N2){
 
 	for (int RightOffset=0;RightOffset<LoopSize;RightOffset++){
 		double SumOfSquaredDistances=0.0;
-		for (i=0; i<LoopSize; i++){
+		for (int i=0; i<LoopSize; i++){
 			double Dist = ~(*NeuronLoop1[LoopSize-i-1] - *NeuronLoop2[(i+RightOffset) % LoopSize]);
 			SumOfSquaredDistances += Dist*Dist;
 		}
@@ -5898,7 +5898,7 @@ bool NeuralNet::MergeCollision(Neuron *N1, Neuron *N2){
 	// delete N2 and all edges and faces eminating from it
 	DelNeuronAndCascadeDelete( N2,false);
 
-	for (i=0; i<LoopSize; i++){
+	for (int i=0; i<LoopSize; i++){
 		Neuron *N1,*N2,*N3 ,*N4;
 		Edge *E12, *E34 , *E13 ,*E24 ,*E14,*E23;
 		// decide which direction is best for correspondance and create faces between it
@@ -6262,7 +6262,7 @@ void NeuralNet::FlipFaceAndVertexNormalsForAgreement(bool FlipNormalDirections){
 	// mark patch numbers.
 	int PatchCounter=0;
 	F=Faces.Head;
-	for (i=0; i<Faces.Size; i++){
+	for (int i=0; i<Faces.Size; i++){
 		if (F->Marked == false){
 			PatchCounter++;
 			TraverseFacesRecursivlyToEstablishOrientation(F,PatchCounter);
@@ -6273,7 +6273,7 @@ void NeuralNet::FlipFaceAndVertexNormalsForAgreement(bool FlipNormalDirections){
 	// now check if digagreements have been formed and mark incosistencies
 	Edge *E=Edges.Head;
 	int InconsistantEdgeCounter=0;
-	for (i=0; i<Edges.Size; i++){
+	for (int i=0; i<Edges.Size; i++){
 		E->NotConsistantInDirection = (E->CheckFaceDirectionConsistency()==1);
 		if (E->NotConsistantInDirection)
 			InconsistantEdgeCounter++;

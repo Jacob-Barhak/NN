@@ -9,15 +9,16 @@ Some point cloud samples are provided in the samples directory.
 
 The following publications use this code:
 
-* F. L. Krause, A. Fischer, N. Gross, J. Barhak, "Reconstruction of Freeform Objects with Arbitrary Topology Using Neural Networks and Subdivision Techniques", CIRP Annals, STC Dn, 52/1/2003, p.125, 2003. Online: http://dx.doi.org/10.1016/S0007-8506(07)60547-2
+* F. L. Krause, A. Fischer, N. Gross, J. Barhak, "Reconstruction of Freeform Objects with Arbitrary Topology Using Neural Networks and Subdivision Techniques", CIRP Annals, STC Dn, 52/1/2003, p.125, 2003, [Online](http://dx.doi.org/10.1016/S0007-8506(07)60547-2).
 
-* J. Barhak, "Reconstruction of Freeform Objects with Arbitrary Topology from Multi Range Images", Ph.D. Thesis, Mechanical Engineering faculty, Technion, Haifa, Israel, 2003. Seminar on the subject presented on October 24th 2002
+* J. Barhak, "Reconstruction of Freeform Objects with Arbitrary Topology from Multi Range Images", Ph.D. Thesis, Mechanical Engineering faculty, Technion, Haifa, Israel, 2003. Seminar on the subject presented on October 24th 2002, [Online](https://sites.google.com/site/jacobbarhak/home/Jacob_Barhak_PhD_Thesis.pdf).
 
 For further information regarding the software use, please contact:
 
-Jacob Barhak Ph.D.
+[Jacob Barhak](http://sites.google.com/site/jacobbarhak/) Ph.D.
+
 Email: jacob.barhak@gmail.com
-http://sites.google.com/site/jacobbarhak/
+
 
 
 License

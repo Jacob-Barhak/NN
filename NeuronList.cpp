@@ -221,7 +221,7 @@ void NeuronList::Sort(int k , Neuron *SortHead ,int SizeToEnd){
 	}
 
 	// move head to the back k steps so the minimal value will be at the start
-	for (i=0;i<IterationsDone;i++){
+	for (int i=0;i<IterationsDone;i++){
 		Head=Head->Prev;
 		
 	}

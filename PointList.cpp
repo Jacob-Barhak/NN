@@ -206,7 +206,7 @@ istream& operator >> ( istream& is, PointList &PtLst ){
 
 		// now create the faces
 
-		for (i=0;i<FaceNo;i++){
+		for (int i=0;i<FaceNo;i++){
 			MyPoint *V1, *V2, *V3;
 
 			V1= & PtArray[PtIndex[FaceIndex[0][i]]];
